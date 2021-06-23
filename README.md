@@ -21,7 +21,7 @@ or
 $ pip install -r requirements.txt
 ```
 
-depending on what operating system you use.
+Depending on what operating system you use.
 Be sure to add the TLS location to your environment
 variables by adding the following to the bottom of 
 your environment variables (if on Linux): 
