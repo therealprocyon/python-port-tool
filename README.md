@@ -1,4 +1,4 @@
-# python Port Tool
+# Python Port Tool
 
 
 This is a quick and dirty project to check network 
