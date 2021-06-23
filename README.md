@@ -1,10 +1,13 @@
-# python-tool
+# python Port Tool
 
 
 This is a quick and dirty project to check network 
 ports for data that is sent through them. It also asks 
 if SSL/TLS is used for that port and asks for a request. 
-Plain text connections work fine, but the TLS 1.3 part of the client isn't working yet.
+Plain text connections work fine, as does TLS. it
+probably doesn't do what you expect,but that's 
+a feature not a bug.
+
 
 ### How to use
 
