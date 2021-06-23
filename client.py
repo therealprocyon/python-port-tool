@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import socket
 import string
+import sys
 
 def start_conn(host,port):
 
@@ -26,16 +27,15 @@ def start_conn(host,port):
         print("Oopsie woopsie, we did a fuckywucky")
         exit()
         
+    print("Enter your request header: ")
+    request = sys.stdin.buffer.readline()
+        
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect(addr)
-        request = input("Enter your request header: ")
-        byte_request = request.encode('utf-8')
-        s.sendall(b"" + byte_request)
+        s.send(request)
         while True:
             data = s.recv(BUFFER_SIZE)
-            data = str(data, 'utf-8')
             if ( len(data) < 1 ):
                 break
-            print(data)
-   
+            sys.stdout.buffer.write(data)
    
