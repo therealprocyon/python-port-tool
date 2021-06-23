@@ -2,7 +2,7 @@
 import socket
 import ssl
 import string
-import pprint
+import sys
 
 
 def start_conn(host,port):
@@ -29,30 +29,24 @@ def start_conn(host,port):
         print("Oopsie woopsie, we did a fuckywucky")
         exit()
     
-    request = input("Enter your request header: ")
-    context = ssl.create_default_context() 
+
+    context = ssl.create_default_context()
+    
+    print("Enter your request header: ")
+    request = sys.stdin.buffer.readline()
+#    byte_request = request.encode('utf-8')
 
 
-
-    with socket.create_connection(addr) as sock:
-        with context.wrap_socket(sock, server_hostname=host) as ssock:
-            while True:
-                try:
-                    ssock.do_handshake()
-                    break
-                except ssl.SSLWantReadError:
-                    select.select([sock], [], [])
-                except ssl.SSLWantWriteError:
-                    select.select([], [sock], [])
-            cert = ssock.getpeercert()
-            pprint.pprint(cert)
-            print(ssock.version())
-            ssock.sendall(request.encode())
+    with socket.create_connection(addr) as s:
+        with context.wrap_socket(s, server_hostname=host) as ssock:
+           # cert = ssock.getpeercert()
+            #pprint.pprint(cert)
+            #print(ssock.version())
+            ssock.send(request)
+            
             while True:
                 data = ssock.recv(BUFFER_SIZE)
-                print(data)
                 if ( len(data) < 1 ):
                     break
+                sys.stdout.buffer.write(data)
 
-   
-   
