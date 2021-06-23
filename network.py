@@ -28,8 +28,7 @@ def main():
         else:
             ip = ipaddress.ip_address(response)
 #            print(ip)
-            ip = str(ip)
-            host = ip
+            host = response
     except:
         print("Oopsie woopsie, we did a fuckywucky")
         exit()
