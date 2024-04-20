@@ -3,7 +3,7 @@
 
 This is a quick and dirty project to check network 
 ports for data that is sent through them. It also asks 
-if SSL/TLS is used for that port and asks for a request. 
+if SSL/TLS is used and then tries to connect to the port specified. 
 Plain text connections work fine, as does TLS. It
 probably doesn't do what you expect, but that's 
 a feature not a bug.
